@@ -1,29 +1,29 @@
-# import pandas as pd
+import pandas as pd
 
-# def clean_csv_automatically(input_file, output_file):
-#     # Load the CSV into a DataFrame
-#     df = pd.read_csv(input_file)
+def clean_csv_automatically(input_file, output_file):
+    # Load the CSV into a DataFrame
+    df = pd.read_csv(input_file)
     
-#     # Normalize the 'entity' column for case-insensitive duplicate checking
-#     df['entity_normalized'] = df['entity'].str.lower()
+    # Normalize the 'entity' column for case-insensitive duplicate checking
+    df['entity_normalized'] = df['entity'].str.lower()
     
-#     # Drop duplicates based on the normalized entity column, keeping the first occurrence
-#     cleaned_df = df.drop_duplicates(subset='entity_normalized').drop(columns=['entity_normalized'])
+    # Drop duplicates based on the normalized entity column, keeping the first occurrence
+    cleaned_df = df.drop_duplicates(subset='entity_normalized').drop(columns=['entity_normalized'])
     
-#     # Report results
-#     total_duplicates = len(df) - len(cleaned_df)
-#     print(f"Total rows removed: {total_duplicates}")
-#     print(f"Remaining rows: {len(cleaned_df)}")
+    # Report results
+    total_duplicates = len(df) - len(cleaned_df)
+    print(f"Total rows removed: {total_duplicates}")
+    print(f"Remaining rows: {len(cleaned_df)}")
     
-#     # Save the cleaned data to a new CSV
-#     cleaned_df.to_csv(output_file, index=False)
-#     print(f"Cleaned data saved to {output_file}")
+    # Save the cleaned data to a new CSV
+    cleaned_df.to_csv(output_file, index=False)
+    print(f"Cleaned data saved to {output_file}")
 
-# # Usage example
-# input_csv = "entities.csv"  # Replace with your input CSV file path
-# output_csv = "cleaned_output.csv"  # Replace with your desired output CSV file path
+# Usage example
+input_csv = "/home/vidur/mediagraph/data/entities2020.csv"  # Replace with your input CSV file path
+output_csv = "/home/vidur/mediagraph/data/cleaned_entities2020.csv"  # Replace with your desired output CSV file path
 
-# clean_csv_automatically(input_csv, output_csv)
+clean_csv_automatically(input_csv, output_csv)
 
 #---
 
@@ -48,9 +48,9 @@ def clean_cooccurrence(cooccurrence_file, cleaned_entities_file, output_file):
     print(f"Cleaned co-occurrence data saved to {output_file}")
 
 # Usage example
-cooccurrence_csv = "cooccurrences.csv"  # Replace with your co-occurrence CSV file path
-cleaned_entities_csv = "cleaned_entities.csv"  # Replace with your cleaned entities CSV file path
-output_csv = "cleaned_co_occurrence.csv"  # Replace with your desired output CSV file path
+cooccurrence_csv = "/home/vidur/mediagraph/data/cooccurrences_with_dates2020.csv"  # Replace with your co-occurrence CSV file path
+cleaned_entities_csv = "/home/vidur/mediagraph/data/cleaned_entities2020.csv"  # Replace with your cleaned entities CSV file path
+output_csv = "/home/vidur/mediagraph/data/cleaned_co_occurrence2020.csv"  # Replace with your desired output CSV file path
 
 clean_cooccurrence(cooccurrence_csv, cleaned_entities_csv, output_csv)
 
